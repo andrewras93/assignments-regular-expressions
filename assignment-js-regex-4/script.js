@@ -2,7 +2,7 @@
 
 const body      = document.getElementById('body');
 const ul        = document.createElement('ul');
-const regex     = /[a-z]\w+/gi;
+const regex     = /\b[a-zæøå]+\b/gi;
 const matches   = text1.match(regex);
 
 const numberOfWords = document.createElement('li');
