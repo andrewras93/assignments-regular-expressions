@@ -1,23 +1,27 @@
 'use strict'
 
-const body      = document.getElementById('body');
-const ul        = document.createElement('ul');
-const regex     = /\b[a-zæøå]+\b/gi;
-const matches   = text1.match(regex);
+import { text1 }        from "./8fdmf10.js";
+import { text2 }        from "../assignment-js-regex-3/17192_8.js";
+import { TextAnalysis } from "./TextAnalysis.js";
+
+const body          = document.getElementById('body');
+const ul            = document.createElement('ul');
+const regex         = /\b[a-zæøå]+\b/gi;
+const chosenText    = new TextAnalysis(text1);
+const matches       = chosenText.string.match(regex);
+
+chosenText.setWordList(matches);
 
 const numberOfWords = document.createElement('li');
-numberOfWords.appendChild(document.createTextNode(`The referred Danish text from the late 19th century, contains ${matches.length} words.`));
+numberOfWords.appendChild(document.createTextNode(`The referred text contains ${matches.length} words.`));
 ul.appendChild(numberOfWords);
-
 body.appendChild(ul);
 
-const textStripped  = text1.replace(/[,.!_\[\]\-\"\'\;\:\*\(\)\?\s\d\&\<]/g, ' ');
+const textStripped  = chosenText.string.replace(/[,.!_\[\]\-\"\'\;\:\*\(\)\?\s\d\&\<]/g, ' ');
 const words         = textStripped.toLowerCase().split(' ');
 const wordTimesUsed = {};
 
-words.forEach(element => {
-    wordTimesUsed[element] = (wordTimesUsed[element] || 0) + 1;
-});
+chosenText.getTimesUsed(words, wordTimesUsed);
 
 const wordsOrdered = Object.keys(wordTimesUsed).sort().reduce(
     (obj, key) => {
@@ -43,9 +47,7 @@ for (let key in wordsOrdered) {
 const characters            = textStripped.toLocaleLowerCase().split('');
 const characterTimesUsed    = {};
 
-characters.forEach(element => {
-    characterTimesUsed[element] = (characterTimesUsed[element] || 0) + 1;
-});
+chosenText.getTimesUsed(characters, characterTimesUsed);
 
 const ordered = Object.keys(characterTimesUsed).sort().reduce(
     (obj, key) => {

@@ -48,7 +48,7 @@ illustration use 'visiter'.
 
 
 */
-const text2 = `
+export const text2 = `
 THE RAVEN
 
 BY

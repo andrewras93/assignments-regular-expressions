@@ -47,7 +47,7 @@ Miranda van de Heijning, Steen Christensen and the
 PG Online Distributed Proofreading Team
 */
 
-const text1 = `
+export const text1 = `
 FRA DET MODERNE FRANKRIG.
 
 AF RICHARD KAUFMANN.
